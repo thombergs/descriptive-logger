@@ -1,8 +1,8 @@
-package io.reflectoring.coherentslf4j;
+package io.reflectoring.descriptivelogger;
 
 import static org.assertj.core.api.Assertions.*;
 
-import io.reflectoring.coherentslf4j.model.CapturingLogger;
+import io.reflectoring.descriptivelogger.model.CapturingLogger;
 import org.junit.jupiter.api.Test;
 
 /** @author Tom Hombergs */

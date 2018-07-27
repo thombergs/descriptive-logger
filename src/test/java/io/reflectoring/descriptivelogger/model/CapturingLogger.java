@@ -1,8 +1,8 @@
-package io.reflectoring.coherentslf4j.model;
+package io.reflectoring.descriptivelogger.model;
 
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 
-import io.reflectoring.coherentslf4j.MDCValues;
+import io.reflectoring.descriptivelogger.MDCValues;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

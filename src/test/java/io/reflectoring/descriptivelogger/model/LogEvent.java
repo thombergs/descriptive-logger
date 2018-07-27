@@ -1,6 +1,6 @@
-package io.reflectoring.coherentslf4j.model;
+package io.reflectoring.descriptivelogger.model;
 
-import io.reflectoring.coherentslf4j.MDCValues;
+import io.reflectoring.descriptivelogger.MDCValues;
 import org.slf4j.event.Level;
 
 /** @author Tom Hombergs */

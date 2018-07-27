@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "com.diffplug.spotless:spotless-plugin-gradle:3.0.0"
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:3.14.0"
     }
 }
 
@@ -12,7 +12,7 @@ plugins {
     id "com.jfrog.artifactory" version "4.5.4"
     id "com.jfrog.bintray" version "1.7.3"
     id "maven-publish"
-    id "com.diffplug.gradle.spotless" version "3.0.0"
+    id "com.diffplug.gradle.spotless" version "3.14.0"
 }
 
 repositories {
@@ -73,7 +73,7 @@ def pomConfig = {
     }
 
     scm {
-        url "https://github.com/thombergs/coherent-slf4j"
+        url "https://github.com/thombergs/descriptive-logger"
     }
 }
 
@@ -88,13 +88,13 @@ publishing {
                 classifier "javadoc"
             }
             groupId 'io.reflectoring'
-            artifactId 'coherent-slf4j'
+            artifactId 'descriptive-logger'
             version project.version
             pom.withXml {
                 def root = asNode()
-                root.appendNode('description', 'Conveniently add unique IDs to your log messages')
-                root.appendNode('name', 'IDs 4 SLF4J')
-                root.appendNode('url', 'https://github.com/thombergs/coherent-slf4j')
+                root.appendNode('description', 'Define your Log Messages descriptively and with IDs.')
+                root.appendNode('name', 'Descriptive Logger')
+                root.appendNode('url', 'https://github.com/thombergs/descriptive-logger')
                 root.children().last() + pomConfig
             }
         }
@@ -115,7 +115,7 @@ artifactory {
             publishPom = true
             properties = [
                     'build.number': buildNumber,
-                    'build.name'  : 'coherent-slf4j'
+                    'build.name'  : 'descriptive-logger'
             ]
         }
     }
@@ -123,7 +123,7 @@ artifactory {
         repoKey = 'jcenter'
     }
     clientConfig.info.setBuildNumber(buildNumber)
-    clientConfig.info.setBuildName('coherent-slf4j')
+    clientConfig.info.setBuildName('descriptive-logger')
 }
 
 bintray {
@@ -133,10 +133,10 @@ bintray {
 
     pkg {
         repo = 'maven-releases'
-        name = 'coherent-slf4j'
+        name = 'descriptive-logger'
         userOrg = 'reflectoring'
-        licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/thombergs/coherent-slf4j'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/thombergs/descriptive-logger'
         version {
             name = project.version
             desc = "build ${buildNumber}"

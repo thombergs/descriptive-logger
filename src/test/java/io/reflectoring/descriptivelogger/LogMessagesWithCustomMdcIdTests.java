@@ -1,6 +1,6 @@
-package io.reflectoring.coherentslf4j;
+package io.reflectoring.descriptivelogger;
 
-import io.reflectoring.coherentslf4j.model.CapturingLogger;
+import io.reflectoring.descriptivelogger.model.CapturingLogger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.event.Level;

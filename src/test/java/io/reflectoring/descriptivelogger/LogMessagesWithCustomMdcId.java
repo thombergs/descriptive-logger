@@ -1,4 +1,4 @@
-package io.reflectoring.coherentslf4j;
+package io.reflectoring.descriptivelogger;
 
 import org.slf4j.event.Level;
 

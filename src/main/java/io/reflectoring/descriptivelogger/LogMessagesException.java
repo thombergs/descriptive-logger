@@ -1,4 +1,4 @@
-package io.reflectoring.coherentslf4j;
+package io.reflectoring.descriptivelogger;
 
 /** @author Tom Hombergs */
 public class LogMessagesException extends RuntimeException {
