@@ -1,0 +1,160 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:3.0.0"
+    }
+}
+
+plugins {
+    id "java"
+    id "com.jfrog.artifactory" version "4.5.4"
+    id "com.jfrog.bintray" version "1.7.3"
+    id "maven-publish"
+    id "com.diffplug.gradle.spotless" version "3.0.0"
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+}
+
+// run gradle with "-Dsnapshot=true" to automatically append "-SNAPSHOT" to the version
+version = '1.5' + (Boolean.valueOf(System.getProperty("snapshot")) ? "-SNAPSHOT" : "")
+sourceCompatibility = 1.8
+
+ext {
+    bintrayUser = System.getProperty("bintray.user")
+    bintrayKey = System.getProperty("bintray.key")
+    buildNumber = System.getProperty("build.number")
+}
+
+dependencies {
+    compile "org.springframework:spring-aop:5.0.7.RELEASE"
+    compile "org.slf4j:slf4j-api:1.7.25"
+    testCompile 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
+    testCompile "org.mockito:mockito-core:2.20.0"
+    testCompile "org.assertj:assertj-core:3.10.0"
+    testCompile "ch.qos.logback:logback-classic:1.0.13"
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+javadoc.failOnError = false
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+def pomConfig = {
+    licenses {
+        license {
+            name "MIT License"
+            url "https://opensource.org/licenses/MIT"
+            distribution "repo"
+        }
+    }
+    developers {
+        developer {
+            id "thombergs"
+            name "Tom Hombergs"
+            email "tom.hombergs@gmail.com"
+        }
+    }
+
+    scm {
+        url "https://github.com/thombergs/coherent-slf4j"
+    }
+}
+
+publishing {
+    publications {
+        mavenPublication(MavenPublication) {
+            from components.java
+            artifact sourcesJar {
+                classifier "sources"
+            }
+            artifact javadocJar {
+                classifier "javadoc"
+            }
+            groupId 'io.reflectoring'
+            artifactId 'coherent-slf4j'
+            version project.version
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('description', 'Conveniently add unique IDs to your log messages')
+                root.appendNode('name', 'IDs 4 SLF4J')
+                root.appendNode('url', 'https://github.com/thombergs/coherent-slf4j')
+                root.children().last() + pomConfig
+            }
+        }
+    }
+}
+
+artifactory {
+    contextUrl = 'http://oss.jfrog.org'
+    publish {
+        repository {
+            repoKey = 'oss-snapshot-local'
+            username = bintrayUser
+            password = bintrayKey
+        }
+        defaults {
+            publications('mavenPublication')
+            publishArtifacts = true
+            publishPom = true
+            properties = [
+                    'build.number': buildNumber,
+                    'build.name'  : 'coherent-slf4j'
+            ]
+        }
+    }
+    resolve {
+        repoKey = 'jcenter'
+    }
+    clientConfig.info.setBuildNumber(buildNumber)
+    clientConfig.info.setBuildName('coherent-slf4j')
+}
+
+bintray {
+    user = bintrayUser
+    key = bintrayKey
+    publications = ['mavenPublication']
+
+    pkg {
+        repo = 'maven-releases'
+        name = 'coherent-slf4j'
+        userOrg = 'reflectoring'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/thombergs/coherent-slf4j'
+        version {
+            name = project.version
+            desc = "build ${buildNumber}"
+            released = new Date()
+            gpg {
+                sign = true
+            }
+        }
+    }
+
+    publish = true
+}
+
+spotless {
+    java {
+        removeUnusedImports()
+        googleJavaFormat()
+    }
+}
+
+
