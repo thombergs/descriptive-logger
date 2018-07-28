@@ -53,7 +53,7 @@ interface MyLogger {
 
 Next, we let the `LoggerFactory` create a descriptive logger for us and use it in our code.
 
-```
+```java
 class MyService {
   
   // The LoggerFactory needs to know which descriptive interface to build a logger for.
