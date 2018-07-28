@@ -26,11 +26,11 @@ public class LoggerFactory {
   private LoggerFactory() {}
 
   /**
-   * Creates a logger from a logging interface annotated with @{@link DescriptiveLogger}. Methods in this
-   * interface will be forwared to an SLF4J logger.
+   * Creates a logger from a logging interface annotated with @{@link DescriptiveLogger}. Methods in
+   * this interface will be forwared to an SLF4J logger.
    *
-   * @param logMessagesInterface the interface annotated with @{@link DescriptiveLogger} for which to
-   *     create a proxy.
+   * @param logMessagesInterface the interface annotated with @{@link DescriptiveLogger} for which
+   *     to create a proxy.
    * @param loggerName the name of the SLF4J logger to which the log messages are being forwarded.
    */
   public static <T> T getLogger(Class<T> logMessagesInterface, String loggerName) {
@@ -39,11 +39,11 @@ public class LoggerFactory {
   }
 
   /**
-   * Creates a logger from a logging interface annotated with @{@link DescriptiveLogger}. Methods in this
-   * interface will be forwared to an SLF4J logger.
+   * Creates a logger from a logging interface annotated with @{@link DescriptiveLogger}. Methods in
+   * this interface will be forwared to an SLF4J logger.
    *
-   * @param logMessagesInterface the interface annotated with @{@link DescriptiveLogger} for which to
-   *     create a proxy.
+   * @param logMessagesInterface the interface annotated with @{@link DescriptiveLogger} for which
+   *     to create a proxy.
    * @param forClass the class for which to create an SLF4J logger to which the log messages are
    *     being forwarded.
    */
@@ -53,11 +53,11 @@ public class LoggerFactory {
   }
 
   /**
-   * Creates a logger from a logging interface annotated with @{@link DescriptiveLogger}. Methods in this
-   * interface will be forwared to an SLF4J logger.
+   * Creates a logger from a logging interface annotated with @{@link DescriptiveLogger}. Methods in
+   * this interface will be forwared to an SLF4J logger.
    *
-   * @param logMessagesInterface the interface annotated with @{@link DescriptiveLogger} for which to
-   *     create a proxy.
+   * @param logMessagesInterface the interface annotated with @{@link DescriptiveLogger} for which
+   *     to create a proxy.
    * @param logger the SLF4J logger to which the log messages are being forwarded.
    */
   public static <T> T getLogger(Class<T> logMessagesInterface, Logger logger) {

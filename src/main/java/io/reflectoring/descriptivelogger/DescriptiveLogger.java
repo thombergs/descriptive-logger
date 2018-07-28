@@ -11,9 +11,9 @@ import java.lang.annotation.Target;
  * log message. The methods must be annotated with @{@link LogMessage} to define the content of the
  * log message.
  *
- * <p>An interface marked with @{@link DescriptiveLogger} is not intended to be implemented manually.
- * Instead, use {@link LoggerFactory} to generate a proxy that forwards the log messages to an
- * SLF4J logger.
+ * <p>An interface marked with @{@link DescriptiveLogger} is not intended to be implemented
+ * manually. Instead, use {@link LoggerFactory} to generate a proxy that forwards the log messages
+ * to an SLF4J logger.
  *
  * @author Tom Hombergs
  */

@@ -8,8 +8,9 @@ import java.lang.annotation.Target;
 import org.slf4j.event.Level;
 
 /**
- * Used to annotate methods within an interface annotated with @{@link DescriptiveLogger}. The log message
- * described by this annotation will be forwarded to an SLF4J logger when the method is invoked.
+ * Used to annotate methods within an interface annotated with @{@link DescriptiveLogger}. The log
+ * message described by this annotation will be forwarded to an SLF4J logger when the method is
+ * invoked.
  *
  * <p>The signature of the method must have no parameters at all or must match to a valid log method
  * signature of the {@link org.slf4j.Logger} interface, i.e:
@@ -49,6 +50,10 @@ public @interface LogMessage {
    * Unique ID of the log message. If defined, this ID will be published in the Mapped Diagnostic
    * Context via {@link org.slf4j.MDC#put(String, String)} just before the log message is forwarded
    * to the SLF4J logger.
+   *
+   * <p>It's advised to use numbers with enough digits so that they are unique within your code
+   * base. This makes it easy to search for a log message in the code base when you found it in a
+   * log.
    */
   int id() default -1;
 }
