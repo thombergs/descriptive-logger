@@ -68,6 +68,12 @@ class MyService {
 } 
 ```
 
+Depending on the configured logging pattern, this would result in a log something like this:
+
+```
+2018-07-28 10:11:34 [main] INFO  MyService - 10043 - Hello Bob
+```
+
 ### Log Message IDs
 
 The (optional) `id`s defined in the `@LogMessage` annotations above are being passed into
