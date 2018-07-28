@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
  * log message. The methods must be annotated with @{@link LogMessage} to define the content of the
  * log message.
  *
- * <p>An interface marked with @{@link LogMessages} is not intended to be implemented manually.
+ * <p>An interface marked with @{@link DescriptiveLogger} is not intended to be implemented manually.
  * Instead, use {@link LogMessagesFactory} to generate a proxy that forwards the log messages to an
  * SLF4J logger.
  *
@@ -20,7 +20,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface LogMessages {
+public @interface DescriptiveLogger {
 
   /**
    * Defines the minimum for the {@code id} of all @{@link LogMessage} annotations within this

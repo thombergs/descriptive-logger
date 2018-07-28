@@ -4,6 +4,6 @@ package io.reflectoring.descriptivelogger;
 public class MissingLogMessageAnnotationException extends LogMessagesException {
 
   public MissingLogMessageAnnotationException(Class<?> logMessagesInterface) {
-    super(String.format("Annotation @LogMessages is missing on class %s", logMessagesInterface));
+    super(String.format("Annotation @DescriptiveLogger is missing on class %s", logMessagesInterface));
   }
 }

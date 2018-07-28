@@ -6,15 +6,15 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.event.Level;
 
 /** @author Tom Hombergs */
-class LogMessagesWithCustomMdcIdTests {
+class DescriptiveLoggerWithCustomMdcIdTests {
 
-  private LogMessagesWithCustomMdcId log;
+  private DescriptiveLoggerWithCustomMdcId log;
 
   private CapturingLogger capturingLogger = new CapturingLogger();
 
   @BeforeEach
   void setup() {
-    log = LogMessagesFactory.getLogger(LogMessagesWithCustomMdcId.class, capturingLogger);
+    log = LogMessagesFactory.getLogger(DescriptiveLoggerWithCustomMdcId.class, capturingLogger);
   }
 
   @Test

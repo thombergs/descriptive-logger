@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 import org.slf4j.event.Level;
 
 /**
- * Used to annotate methods within an interface annotated with @{@link LogMessages}. The log message
+ * Used to annotate methods within an interface annotated with @{@link DescriptiveLogger}. The log message
  * described by this annotation will be forwarded to an SLF4J logger when the method is invoked.
  *
  * <p>The signature of the method must have no parameters at all or must match to a valid log method

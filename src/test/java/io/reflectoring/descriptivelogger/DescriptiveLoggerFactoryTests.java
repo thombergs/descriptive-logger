@@ -4,26 +4,26 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.LoggerFactory;
 
 /** @author Tom Hombergs */
-class LogMessagesFactoryTests {
+class DescriptiveLoggerFactoryTests {
 
   @Test
   void constructorWithStringParamWorks() {
-    BasicLogMessages log = LogMessagesFactory.getLogger(BasicLogMessages.class, "mylogger");
+    BasicDescriptiveLogger log = LogMessagesFactory.getLogger(BasicDescriptiveLogger.class, "mylogger");
     log.simpleLogMessage();
   }
 
   @Test
   void constructorWithClassParamWorks() {
-    BasicLogMessages log =
-        LogMessagesFactory.getLogger(BasicLogMessages.class, LogMessagesFactory.class);
+    BasicDescriptiveLogger log =
+        LogMessagesFactory.getLogger(BasicDescriptiveLogger.class, LogMessagesFactory.class);
     log.simpleLogMessage();
   }
 
   @Test
   void constructorWithLoggerParamWorks() {
-    BasicLogMessages log =
+    BasicDescriptiveLogger log =
         LogMessagesFactory.getLogger(
-            BasicLogMessages.class, LoggerFactory.getLogger(LogMessagesFactory.class));
+            BasicDescriptiveLogger.class, LoggerFactory.getLogger(LogMessagesFactory.class));
     log.simpleLogMessage();
   }
 }

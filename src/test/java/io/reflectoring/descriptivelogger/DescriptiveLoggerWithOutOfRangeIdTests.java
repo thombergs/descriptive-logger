@@ -6,7 +6,7 @@ import io.reflectoring.descriptivelogger.model.CapturingLogger;
 import org.junit.jupiter.api.Test;
 
 /** @author Tom Hombergs */
-class LogMessagesWithOutOfRangeIdTests {
+class DescriptiveLoggerWithOutOfRangeIdTests {
 
   private CapturingLogger capturingLogger = new CapturingLogger();
 
@@ -15,11 +15,11 @@ class LogMessagesWithOutOfRangeIdTests {
     assertThatExceptionOfType(MessageIdOutOfRangeException.class)
         .isThrownBy(
             () -> {
-              LogMessagesFactory.getLogger(LogMessagesWithOutOfRangeId.class, capturingLogger);
+              LogMessagesFactory.getLogger(DescriptiveLoggerWithOutOfRangeId.class, capturingLogger);
             })
         .withMessageContaining("9")
         .withMessageContaining("101")
-        .withMessageContaining(LogMessagesWithOutOfRangeId.class.getName())
+        .withMessageContaining(DescriptiveLoggerWithOutOfRangeId.class.getName())
         .withMessageContaining("min: 10")
         .withMessageContaining("max: 100");
   }

@@ -5,7 +5,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /** @author Tom Hombergs */
-class LogMessagesWithoutClassAnnotationTests {
+class DescriptiveLoggerWithoutClassAnnotationTests {
 
   private CapturingLogger capturingLogger = new CapturingLogger();
 
@@ -15,8 +15,8 @@ class LogMessagesWithoutClassAnnotationTests {
         .isThrownBy(
             () -> {
               LogMessagesFactory.getLogger(
-                  LogMessagesWithoutClassAnnotation.class, capturingLogger);
+                  DescriptiveLoggerWithoutClassAnnotation.class, capturingLogger);
             })
-        .withMessageContaining(LogMessagesWithoutClassAnnotation.class.getName());
+        .withMessageContaining(DescriptiveLoggerWithoutClassAnnotation.class.getName());
   }
 }

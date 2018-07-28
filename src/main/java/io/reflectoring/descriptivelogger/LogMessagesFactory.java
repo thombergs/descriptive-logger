@@ -16,7 +16,7 @@ import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.util.ReflectionUtils;
 
 /**
- * Creates coherent loggers from interfaces annotated with @{@link LogMessages}.
+ * Creates coherent loggers from interfaces annotated with @{@link DescriptiveLogger}.
  *
  * @author Tom Hombergs
  */
@@ -27,10 +27,10 @@ public class LogMessagesFactory {
   private LogMessagesFactory() {}
 
   /**
-   * Creates a logger from a logging interface annotated with @{@link LogMessages}. Methods in this
+   * Creates a logger from a logging interface annotated with @{@link DescriptiveLogger}. Methods in this
    * interface will be forwared to an SLF4J logger.
    *
-   * @param logMessagesInterface the interface annotated with @{@link LogMessages} for which to
+   * @param logMessagesInterface the interface annotated with @{@link DescriptiveLogger} for which to
    *     create a proxy.
    * @param loggerName the name of the SLF4J logger to which the log messages are being forwarded.
    */
@@ -40,10 +40,10 @@ public class LogMessagesFactory {
   }
 
   /**
-   * Creates a logger from a logging interface annotated with @{@link LogMessages}. Methods in this
+   * Creates a logger from a logging interface annotated with @{@link DescriptiveLogger}. Methods in this
    * interface will be forwared to an SLF4J logger.
    *
-   * @param logMessagesInterface the interface annotated with @{@link LogMessages} for which to
+   * @param logMessagesInterface the interface annotated with @{@link DescriptiveLogger} for which to
    *     create a proxy.
    * @param forClass the class for which to create an SLF4J logger to which the log messages are
    *     being forwarded.
@@ -54,10 +54,10 @@ public class LogMessagesFactory {
   }
 
   /**
-   * Creates a logger from a logging interface annotated with @{@link LogMessages}. Methods in this
+   * Creates a logger from a logging interface annotated with @{@link DescriptiveLogger}. Methods in this
    * interface will be forwared to an SLF4J logger.
    *
-   * @param logMessagesInterface the interface annotated with @{@link LogMessages} for which to
+   * @param logMessagesInterface the interface annotated with @{@link DescriptiveLogger} for which to
    *     create a proxy.
    * @param logger the SLF4J logger to which the log messages are being forwarded.
    */
@@ -67,7 +67,7 @@ public class LogMessagesFactory {
 
   private <T> T doCreate(Class<T> logMessagesInterface, Logger logger) {
 
-    LogMessages classAnnotation = logMessagesInterface.getAnnotation(LogMessages.class);
+    DescriptiveLogger classAnnotation = logMessagesInterface.getAnnotation(DescriptiveLogger.class);
     if (classAnnotation == null) {
       throw new MissingLogMessageAnnotationException(logMessagesInterface);
     }
@@ -101,13 +101,13 @@ public class LogMessagesFactory {
       Class<?> logMessagesInterface, List<LogMessage> methodAnnotations) {
     Set<Integer> duplicateIds = getDuplicateIds(methodAnnotations);
     if (!duplicateIds.isEmpty()) {
-      throw new DuplicateLogMessageIdException(logMessagesInterface, duplicateIds);
+      throw new DuplicateMessageIdException(logMessagesInterface, duplicateIds);
     }
   }
 
   private void validateIdsInRange(
       Class<?> logMessagesInterface,
-      LogMessages classAnnotation,
+      DescriptiveLogger classAnnotation,
       List<LogMessage> methodAnnotations) {
     Set<Integer> outOfRangeIds =
         methodAnnotations
