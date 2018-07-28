@@ -1,29 +1,28 @@
 package io.reflectoring.descriptivelogger;
 
 import org.junit.jupiter.api.Test;
-import org.slf4j.LoggerFactory;
 
 /** @author Tom Hombergs */
-class DescriptiveLoggerFactoryTests {
+class LoggerFactoryTests {
 
   @Test
   void constructorWithStringParamWorks() {
-    BasicDescriptiveLogger log = LogMessagesFactory.getLogger(BasicDescriptiveLogger.class, "mylogger");
+    BasicDescriptiveLogger log = LoggerFactory.getLogger(BasicDescriptiveLogger.class, "mylogger");
     log.simpleLogMessage();
   }
 
   @Test
   void constructorWithClassParamWorks() {
     BasicDescriptiveLogger log =
-        LogMessagesFactory.getLogger(BasicDescriptiveLogger.class, LogMessagesFactory.class);
+        LoggerFactory.getLogger(BasicDescriptiveLogger.class, LoggerFactory.class);
     log.simpleLogMessage();
   }
 
   @Test
   void constructorWithLoggerParamWorks() {
     BasicDescriptiveLogger log =
-        LogMessagesFactory.getLogger(
-            BasicDescriptiveLogger.class, LoggerFactory.getLogger(LogMessagesFactory.class));
+        LoggerFactory.getLogger(
+            BasicDescriptiveLogger.class, org.slf4j.LoggerFactory.getLogger(LoggerFactory.class));
     log.simpleLogMessage();
   }
 }

@@ -15,7 +15,7 @@ class DescriptiveLoggerWithDuplicateIdTests {
     assertThatExceptionOfType(DuplicateMessageIdException.class)
         .isThrownBy(
             () -> {
-              LogMessagesFactory.getLogger(DescriptiveLoggerWithDuplicateId.class, capturingLogger);
+              LoggerFactory.getLogger(DescriptiveLoggerWithDuplicateId.class, capturingLogger);
             })
         .withMessageContaining("10")
         .withMessageContaining(DescriptiveLoggerWithDuplicateId.class.getName());

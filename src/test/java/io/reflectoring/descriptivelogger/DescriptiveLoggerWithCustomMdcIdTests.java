@@ -14,7 +14,7 @@ class DescriptiveLoggerWithCustomMdcIdTests {
 
   @BeforeEach
   void setup() {
-    log = LogMessagesFactory.getLogger(DescriptiveLoggerWithCustomMdcId.class, capturingLogger);
+    log = LoggerFactory.getLogger(DescriptiveLoggerWithCustomMdcId.class, capturingLogger);
   }
 
   @Test

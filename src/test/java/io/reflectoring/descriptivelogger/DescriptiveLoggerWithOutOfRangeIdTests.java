@@ -15,7 +15,7 @@ class DescriptiveLoggerWithOutOfRangeIdTests {
     assertThatExceptionOfType(MessageIdOutOfRangeException.class)
         .isThrownBy(
             () -> {
-              LogMessagesFactory.getLogger(DescriptiveLoggerWithOutOfRangeId.class, capturingLogger);
+              LoggerFactory.getLogger(DescriptiveLoggerWithOutOfRangeId.class, capturingLogger);
             })
         .withMessageContaining("9")
         .withMessageContaining("101")

@@ -14,7 +14,7 @@ class BasicDescriptiveLoggerTests {
 
   @BeforeEach
   void setup() {
-    log = LogMessagesFactory.getLogger(BasicDescriptiveLogger.class, capturingLogger);
+    log = LoggerFactory.getLogger(BasicDescriptiveLogger.class, capturingLogger);
   }
 
   @Test

@@ -14,7 +14,7 @@ class DescriptiveLoggerWithoutClassAnnotationTests {
     Assertions.assertThatExceptionOfType(MissingLogMessageAnnotationException.class)
         .isThrownBy(
             () -> {
-              LogMessagesFactory.getLogger(
+              LoggerFactory.getLogger(
                   DescriptiveLoggerWithoutClassAnnotation.class, capturingLogger);
             })
         .withMessageContaining(DescriptiveLoggerWithoutClassAnnotation.class.getName());

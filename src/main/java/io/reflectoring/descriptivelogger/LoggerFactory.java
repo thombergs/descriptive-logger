@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.slf4j.event.Level;
 import org.springframework.aop.framework.ProxyFactory;
@@ -20,11 +19,11 @@ import org.springframework.util.ReflectionUtils;
  *
  * @author Tom Hombergs
  */
-public class LogMessagesFactory {
+public class LoggerFactory {
 
-  private static LogMessagesFactory INSTANCE = new LogMessagesFactory();
+  private static LoggerFactory INSTANCE = new LoggerFactory();
 
-  private LogMessagesFactory() {}
+  private LoggerFactory() {}
 
   /**
    * Creates a logger from a logging interface annotated with @{@link DescriptiveLogger}. Methods in this
@@ -35,7 +34,7 @@ public class LogMessagesFactory {
    * @param loggerName the name of the SLF4J logger to which the log messages are being forwarded.
    */
   public static <T> T getLogger(Class<T> logMessagesInterface, String loggerName) {
-    Logger logger = LoggerFactory.getLogger(loggerName);
+    Logger logger = org.slf4j.LoggerFactory.getLogger(loggerName);
     return getLogger(logMessagesInterface, logger);
   }
 
@@ -49,7 +48,7 @@ public class LogMessagesFactory {
    *     being forwarded.
    */
   public static <T> T getLogger(Class<T> logMessagesInterface, Class<?> forClass) {
-    Logger logger = LoggerFactory.getLogger(forClass);
+    Logger logger = org.slf4j.LoggerFactory.getLogger(forClass);
     return getLogger(logMessagesInterface, logger);
   }
 
