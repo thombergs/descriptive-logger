@@ -4,6 +4,9 @@ With this library, we can define our log messages in a descriptive way in order
 to make them better identifiable in our code base and log files. This works on top
 of SLF4J, so all log messages will be logged by a standard SLF4J Logger.
 
+The idea is inspired by the jboss-logging framework, where a similar concept is
+available.
+
 ## Usage
 
 ### Define a Descriptive Logging Interface
