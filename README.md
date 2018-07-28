@@ -77,7 +77,7 @@ Depending on the configured logging pattern, this would result in a log somethin
 ### Log Message IDs
 
 The (optional) `id`s defined in the `@LogMessage` annotations above are being passed into
-the Message Diagnostic Context (MDC) with the key `id`. The key can be changed by using
+the Mapped Diagnostic Context (MDC) with the key `id`. The key can be changed by using
 the field `idMdcKey` in the `@DescriptiveLogger` annotation.
 
 If we want to add the (optional) `id`s defined in the `@LogMessage` annotations above to out log output ,
