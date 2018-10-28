@@ -34,7 +34,8 @@ ext {
 dependencies {
     compile "org.springframework:spring-aop:5.0.7.RELEASE"
     compile "org.slf4j:slf4j-api:1.7.25"
-    testCompile 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
+    testCompile "org.junit.jupiter:junit-jupiter-api:5.3.1"
+    testRuntime "org.junit.jupiter:junit-jupiter-engine:5.3.1"
     testCompile "org.mockito:mockito-core:2.20.0"
     testCompile "org.assertj:assertj-core:3.10.0"
     testCompile "ch.qos.logback:logback-classic:1.0.13"
